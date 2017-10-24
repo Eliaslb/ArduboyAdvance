@@ -58,7 +58,7 @@ class ArduboyAdvance {
 
     void drawTilemap(int x, int y, Tilemap_t map);
 
-    void setTileset(Tileset_t new);
+    void setTileset(Tileset_t newSet);
     
   private:
     //Keys
