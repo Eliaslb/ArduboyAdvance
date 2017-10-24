@@ -14,16 +14,30 @@
 #define X
 #define Y
 
+#define Tile PImage
+
 typedef struct {
   byte r;
   byte g;
   byte b;  
 } RGB_t;
 
+
+typedef struct {
+  byte pos[64][32];  
+} Tilemap_t;
+
+typedef struct {
+  Tile tile[16]; 
+} Tileset_t;
+
+
 class ArduboyAdvance {
   
   public:
     ArduboyAdvance();
+
+    //Main
     void init();
 
     //Keys
@@ -39,11 +53,19 @@ class ArduboyAdvance {
     void background(RGB_t color);
 
     void drawRect(int x, int y, int x2, int y2, RGB_t color);
+
+    void drawSprite(int x, int y, PImage sprite);
+
+    void drawTilemap(int x, int y, Tilemap_t map);
+
+    void setTileset(Tileset_t new);
+    
   private:
     //Keys
     int heldTime; //Time needed for the key to be set to held 
 
     //Screen
+    Tileset_t currentTileset;
 };
 
 
