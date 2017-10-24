@@ -14,6 +14,17 @@
 #define X
 #define Y
 
+#define SPEAKER1
+#define SPEAKER2
+#define SPEAKER3
+
+typedef struct {
+  int dur[];
+  int c1[];
+  int c2[];
+  int c3[];  
+} Song_t;
+
 #define Tile PImage
 
 typedef struct {
@@ -40,13 +51,17 @@ class ArduboyAdvance {
     //Main
     void init();
 
+    void setFrameRate(byte newFps);
+
     //Keys
     bool pressed(byte key);
+    
     int held(byte key); 
     void setHeldTime(int time);
 
     //Screen
     void clear();
+    
     void drawPixel(int x, int y, RGB_t color);
     
     void background(byte r, byte g, byte b);
@@ -59,6 +74,12 @@ class ArduboyAdvance {
     void drawTilemap(int x, int y, Tilemap_t map);
 
     void setTileset(Tileset_t newSet);
+
+
+    //Sound
+    void playSound(byte speaker, int note);
+    
+    void playSong(Song_t song);
     
   private:
     //Keys
@@ -66,6 +87,8 @@ class ArduboyAdvance {
 
     //Screen
     Tileset_t currentTileset;
+
+    //Sound
 };
 
 
