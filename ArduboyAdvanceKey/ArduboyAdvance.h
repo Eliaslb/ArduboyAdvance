@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <SD.h>
 #include <TFT.h>
+#include "Tones.h"
 
 #define UP
 #define DOWN
@@ -42,6 +43,18 @@ typedef struct {
   Tile tile[16]; 
 } Tileset_t;
 
+typedef struct {
+  int x;
+  int y;
+  int w;
+  int h; 
+} Rect_t;
+
+typedef struct {
+  int x; 
+  int y;  
+} Point_t;
+
 
 class ArduboyAdvance {
   
@@ -52,6 +65,12 @@ class ArduboyAdvance {
     void init();
 
     void setFrameRate(byte newFps);
+
+    int cpuLoad();
+
+    bool nextFrame();
+
+    int everyXFrames(int frames);
 
     //Keys
     bool pressed(byte key);
@@ -74,6 +93,11 @@ class ArduboyAdvance {
     void drawTilemap(int x, int y, Tilemap_t map);
 
     void setTileset(Tileset_t newSet);
+
+
+    bool collide(Point_t point, Rect_t rect);
+
+    bool collide(Rect_t rect1, Rect_t rect2);
 
 
     //Sound
