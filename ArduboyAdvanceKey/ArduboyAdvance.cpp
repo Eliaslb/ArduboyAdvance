@@ -1,5 +1,9 @@
 #include "ArduboyAdvance.h"
 
+ArduboyAdvance::ArduboyAdvance() {
+  screen = new TFT(CS,DC,RS);
+}
+
 bool ArduboyAdvance::pressed(byte key) {
   int val = digitalRead(key);  
   if (val == 1) {

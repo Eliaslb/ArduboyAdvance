@@ -6,6 +6,10 @@
 #include <TFT.h>
 #include "Tones.h"
 
+#define CS  10
+#define DC  9
+#define RS  8
+
 #define UP
 #define DOWN
 #define LEFT
@@ -62,13 +66,13 @@ class ArduboyAdvance {
     ArduboyAdvance();
 
     //Main
-    void init();
+    void init(); //Run in the setup
 
-    void setFrameRate(byte newFps);
+    void setFrameRate(byte newFps); //Set the framerate max
 
-    int cpuLoad();
+    int cpuLoad(); //Get the cpuload
 
-    bool nextFrame();
+    bool nextFrame(); 
 
     int everyXFrames(int frames);
 
@@ -111,8 +115,11 @@ class ArduboyAdvance {
 
     //Screen
     Tileset_t currentTileset;
+    
+    TFT *screen;
 
     //Sound
+    
 };
 
 
